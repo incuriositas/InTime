@@ -3,7 +3,7 @@
 import pandas as pd
 
 to_col = ['날짜', '항공사', '편명', '출발지', '계획', '예상', '출발', '구분', '현황']
-from_col = ['날짜', '항공사', '편명', '도착', '계획', '예상', '출발', '구분', '현황']
+from_col = ['날짜', '항공사', '편명', '도착지', '계획', '예상', '출발', '구분', '현황']
 
 
 def parsing_csv(origin_file_path, new_file_path, column):
