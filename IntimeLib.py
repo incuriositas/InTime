@@ -21,7 +21,11 @@ def fix_flight(df, i):
         df.drop(["Unnamed: 0", "편명", "출발지", "예상", "구분"], axis=1, inplace=True)
 
 def fix_time(df):
-    df['time'] = df['계획'].str.split(':').str[0]
+    for i in range(len(df)):
+        if len(df['time'][i]) < 1:
+            df['TM'] = str(df['날짜']) + str(0) + df['계획'].str.split(':').str[0]
+        else:
+            df['TM'] = str(df['날짜']) + df['계획'].str.split(':').str[0]
 
 def fix_weather(df):
     df['Date'] = df.TM.apply(lambda x: str(x)[:8])
