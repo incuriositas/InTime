@@ -20,6 +20,8 @@ def fix_flight(df, i):
     else:
         df.drop(["Unnamed: 0", "편명", "출발지", "예상", "구분"], axis=1, inplace=True)
 
+def fix_time(df):
+    df['time'] = df['계획'].str.split(':').str[0]
 
 def fix_weather(df):
     df['Date'] = df.TM.apply(lambda x: str(x)[:8])
@@ -59,6 +61,11 @@ fix_flight(df_from_cju, 0)
 fix_flight(df_from_gmp, 0)
 fix_flight(df_to_cju, 1)
 fix_flight(df_to_gmp, 1)
+
+fix_time(df_from_cju)
+fix_time(df_from_gmp)
+fix_time(df_to_cju)
+fix_time(df_to_gmp)
 
 fix_weather(weather_gmp_10)
 fix_weather(weather_cju_10)
