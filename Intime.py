@@ -11,7 +11,13 @@ for i in range(len(df_181001)):
 
     # print(hour)
 
-cols = ['항공사', '현황']
+cols = ['현황']
 new_df = il.one_hot(il.flight_from_cju, cols)
+new_df_10 = il.mask_with_in1d(new_df, "날짜", 20181001)
 
-print(il.flight_from_cju.head())
+merged_df = pd.merge(new_df_10, il.weather_cju_10, on="TM")
+new_merge = merged_df.dropna(axis=1)
+new_merge.drop(["날짜", "Time", "Date", "항공사"], axis=1, inplace=True)
+print(new_merge.head())
+
+il.display_heatmap(new_merge)

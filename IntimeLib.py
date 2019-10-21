@@ -2,7 +2,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib
+import matplotlib.font_manager as fm
+fm.get_fontconfig_fonts()
+# font_location = '/usr/share/fonts/truetype/nanum/NanumGothicOTF.ttf'
+font_location = 'Arial Unicode.ttf' # For Windows
+font_name = fm.FontProperties(fname=font_location).get_name()
+matplotlib.rc('font', family=font_name)
 
+
+def display_heatmap(df):
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(df.corr(), annot=True ,cmap='cubehelix_r')
+    plt.show()
 
 def mask_with_in1d(df, column, val):
     mask = np.in1d(df[column].values, [val])
