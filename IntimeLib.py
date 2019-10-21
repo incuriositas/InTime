@@ -9,17 +9,20 @@ def mask_with_in1d(df, column, val):
     return df[mask]
 
 
-def one_hot(df, col):
-    new_col = pd.get_dummies(df[col])
-    return new_col
+def one_hot(df, cols):
+    new_df = pd.get_dummies(df, columns=cols)
+    return new_df
 
 
-def fix_flight(df):
-    df.drop(["Unnamed: 0", "편명", "예상", "구분"], axis=1, inplace=True)
+def fix_flight(df, i):
+    if i == 0:
+        df.drop(["Unnamed: 0", "편명", "목적지",  "예상", "구분"], axis=1, inplace=True)
+    else:
+        df.drop(["Unnamed: 0", "편명", "출발지", "예상", "구분"], axis=1, inplace=True)
 
 
 def fix_weather(df):
-    df['Date'] = df.TM.apply(lambda x: str(x)[:4] + '-' + str(x)[4:6] + '-' + str(x)[6:8])
+    df['Date'] = df.TM.apply(lambda x: str(x)[:8])
     df['Time'] = df.TM.apply(lambda x: str(x)[8:])
 
 
@@ -52,10 +55,10 @@ weather_gmp_08 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs20190
 weather_cju_08 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201908.csv")
 
 
-fix_flight(df_from_cju)
-fix_flight(df_from_gmp)
-fix_flight(df_to_cju)
-fix_flight(df_to_gmp)
+fix_flight(df_from_cju, 0)
+fix_flight(df_from_gmp, 0)
+fix_flight(df_to_cju, 1)
+fix_flight(df_to_gmp, 1)
 
 fix_weather(weather_gmp_10)
 fix_weather(weather_cju_10)

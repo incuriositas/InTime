@@ -1,4 +1,5 @@
 import IntimeLib as il
+import pandas as pd
 
 df_181001 = il.mask_with_in1d(il.df_from_cju, "날짜", 20181001)
 
@@ -10,5 +11,6 @@ for i in range(len(df_181001)):
 
     print(hour)
 
-print(il.df_to_gmp.head(5))
-print(il.weather_cju_01.head(5))
+cols = ['항공사', '현황']
+new_df = il.one_hot(il.df_from_cju, cols)
+print(new_df.head(5))
