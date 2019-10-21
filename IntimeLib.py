@@ -20,12 +20,18 @@ def fix_flight(df, i):
     else:
         df.drop(["Unnamed: 0", "편명", "출발지", "예상", "구분"], axis=1, inplace=True)
 
-def fix_time(df):
+
+def fix_time(df, file_name):
+    df['time'] = df['계획'].str.split(':').str[0]
+    df['TM'] = ""
     for i in range(len(df)):
-        if len(df['time'][i]) < 1:
-            df['TM'] = str(df['날짜']) + str(0) + df['계획'].str.split(':').str[0]
+        if len(df['time'][i]) == 1:
+            df['TM'][i] = str(df['날짜'][i]) + "0" + df['time'][i]
+            print(df['TM'][i])
         else:
-            df['TM'] = str(df['날짜']) + df['계획'].str.split(':').str[0]
+            df['TM'][i] = str(df['날짜'][i]) + df['time'][i]
+    df.to_csv("dataset/FlightCSV/"+file_name, encoding='utf-8-sig')
+
 
 def fix_weather(df):
     df['Date'] = df.TM.apply(lambda x: str(x)[:8])
@@ -66,10 +72,16 @@ fix_flight(df_from_gmp, 0)
 fix_flight(df_to_cju, 1)
 fix_flight(df_to_gmp, 1)
 
-fix_time(df_from_cju)
-fix_time(df_from_gmp)
-fix_time(df_to_cju)
-fix_time(df_to_gmp)
+# fix_time(df_from_cju, "from_cju.csv")
+# fix_time(df_from_gmp, "from_gmp.csv")
+# fix_time(df_to_cju, "to_cju.csv")
+# fix_time(df_to_gmp, "to_gmp.csv")
+
+flight_from_cju = pd.read_csv("dataset/FlightCSV/from_cju.csv")
+flight_from_gmp = pd.read_csv("dataset/FlightCSV/from_gmp.csv")
+flight_to_cju = pd.read_csv("dataset/FlightCSV/to_cju.csv")
+flight_to_gmp = pd.read_csv("dataset/FlightCSV/to_gmp.csv")
+
 
 fix_weather(weather_gmp_10)
 fix_weather(weather_cju_10)

@@ -9,8 +9,9 @@ for i in range(len(df_181001)):
     else:
         hour = int(df_181001["계획"][i][0:2])
 
-    print(hour)
+    # print(hour)
 
 cols = ['항공사', '현황']
 new_df = il.one_hot(il.df_from_cju, cols)
-print(new_df.head(5))
+print(il.df_from_cju.head(10))
+
