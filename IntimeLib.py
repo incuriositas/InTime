@@ -14,9 +14,68 @@ def one_hot(df, col):
     return new_col
 
 
+def fix_flight(df):
+    df.drop(["Unnamed: 0", "편명", "예상", "구분"], axis=1, inplace=True)
+
+
+def fix_weather(df):
+    df['Date'] = df.TM.apply(lambda x: str(x)[:4] + '-' + str(x)[4:6] + '-' + str(x)[6:8])
+    df['Time'] = df.TM.apply(lambda x: str(x)[8:])
+
+
 df_from_cju = pd.read_csv("dataset/SortedCSV/Flight_from_CJU(Sorted).csv")
 df_from_gmp = pd.read_csv("dataset/SortedCSV/Flight_from_GMP(Sorted).csv")
 df_to_cju = pd.read_csv("dataset/SortedCSV/Flight_to_CJU(Sorted).csv")
 df_to_gmp = pd.read_csv("dataset/SortedCSV/Flight_to_GMP(Sorted).csv")
 
-df_gmp_10 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201810.csv")
+weather_gmp_10 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201810.csv")
+weather_cju_10 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201810.csv")
+weather_gmp_11 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201811.csv")
+weather_cju_11 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201811.csv")
+weather_gmp_12 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201812.csv")
+weather_cju_12 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201812.csv")
+weather_gmp_01 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201901.csv")
+weather_cju_01 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201901.csv")
+weather_gmp_02 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201902.csv")
+weather_cju_02 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201902.csv")
+weather_gmp_03 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201903.csv")
+weather_cju_03 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201903.csv")
+weather_gmp_04 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201904.csv")
+weather_cju_04 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201904.csv")
+weather_gmp_05 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201905.csv")
+weather_cju_05 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201905.csv")
+weather_gmp_06 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201906.csv")
+weather_cju_06 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201906.csv")
+weather_gmp_07 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201907.csv")
+weather_cju_07 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201907.csv")
+weather_gmp_08 = pd.read_csv("dataset/WeatherCSV/김포공항/RKSS_air_stcs201908.csv")
+weather_cju_08 = pd.read_csv("dataset/WeatherCSV/제주공항/RKPC_air_stcs201908.csv")
+
+
+fix_flight(df_from_cju)
+fix_flight(df_from_gmp)
+fix_flight(df_to_cju)
+fix_flight(df_to_gmp)
+
+fix_weather(weather_gmp_10)
+fix_weather(weather_cju_10)
+fix_weather(weather_gmp_11)
+fix_weather(weather_cju_11)
+fix_weather(weather_gmp_12)
+fix_weather(weather_cju_12)
+fix_weather(weather_gmp_01)
+fix_weather(weather_cju_01)
+fix_weather(weather_gmp_02)
+fix_weather(weather_cju_02)
+fix_weather(weather_gmp_03)
+fix_weather(weather_cju_03)
+fix_weather(weather_gmp_04)
+fix_weather(weather_cju_04)
+fix_weather(weather_gmp_05)
+fix_weather(weather_cju_05)
+fix_weather(weather_gmp_06)
+fix_weather(weather_cju_06)
+fix_weather(weather_gmp_07)
+fix_weather(weather_cju_07)
+fix_weather(weather_gmp_08)
+fix_weather(weather_cju_08)

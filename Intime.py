@@ -2,12 +2,13 @@ import IntimeLib as il
 
 df_181001 = il.mask_with_in1d(il.df_from_cju, "날짜", 20181001)
 
-for i in range(len(il.df_gmp_10)):
-    if int(il.df_gmp_10["TM"][i]/100) == 20181001:
-        pass
+for i in range(len(df_181001)):
+    if len(df_181001["계획"][i]) == 4:
+        hour = int(df_181001["계획"][i][0:1])
     else:
-        il.df_gmp_10.drop(i, axis=0, inplace=True)
+        hour = int(df_181001["계획"][i][0:2])
 
+    print(hour)
 
-col = il.one_hot(il.df_from_cju, "현황")
-print(il.df_gmp_10)
+print(il.df_to_gmp.head(5))
+print(il.weather_cju_01.head(5))
