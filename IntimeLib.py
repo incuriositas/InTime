@@ -78,9 +78,13 @@ fix_flight(df_to_gmp, 1)
 # fix_time(df_to_gmp, "to_gmp.csv")
 
 flight_from_cju = pd.read_csv("dataset/FlightCSV/from_cju.csv")
+flight_from_cju.drop("Unnamed: 0", axis=1, inplace=True)
 flight_from_gmp = pd.read_csv("dataset/FlightCSV/from_gmp.csv")
+flight_from_gmp.drop("Unnamed: 0", axis=1, inplace=True)
 flight_to_cju = pd.read_csv("dataset/FlightCSV/to_cju.csv")
+flight_to_cju.drop("Unnamed: 0", axis=1, inplace=True)
 flight_to_gmp = pd.read_csv("dataset/FlightCSV/to_gmp.csv")
+flight_to_gmp.drop("Unnamed: 0", axis=1, inplace=True)
 
 
 fix_weather(weather_gmp_10)

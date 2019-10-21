@@ -12,6 +12,6 @@ for i in range(len(df_181001)):
     # print(hour)
 
 cols = ['항공사', '현황']
-new_df = il.one_hot(il.df_from_cju, cols)
-print(il.df_from_cju.head(10))
+new_df = il.one_hot(il.flight_from_cju, cols)
 
+print(il.flight_from_cju.head())
