@@ -16,7 +16,7 @@ def test_tag():
     return soup
 
 
-key = "W%2FXqZYCB9W4EmWYdttyzqxMOyxiohhUEiB7zIzRzR0c%2BNF3rNi4ZOV8Zs%2Bb0PqrXpWhiwKNcWX%2FISD%2Bgt5oQnQ%3D%3D"
+key = "key"
 url = 'http://openapi.airport.co.kr/service/rest/FlightStatusList/getFlightStatusList?'
 
 num = 1
