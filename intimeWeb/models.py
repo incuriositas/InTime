@@ -3,18 +3,14 @@ from django.db import models
 from django.utils import timezone
 
 
-class Web(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+class Flight(models.Model):
+    airFln = models.CharField(max_length=20, primary_key=True)
+    airline = models.CharField(max_length=20)
+    airport = models.CharField(max_length=50)
+    arrived = models.CharField(max_length=50)
+    boarding = models.CharField(max_length=50)
+    schTime = models.DateTimeField(default=timezone.now())
+    predictTime = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return "%s %s" % (self.airFln, self.predictTime)
