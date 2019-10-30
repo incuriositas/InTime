@@ -1,0 +1,5 @@
+<form action="{% url 'form' %}" method="POST">
+    {% csrf_token %}
+    {{ form|linebreaks}}
+    <input type="submit" value="submit" name="submit">
+</form>

@@ -26,7 +26,7 @@ query = {
     'pageNo': num,
 }
 
-test = test_tag()
+# test = test_tag()
 # xmlUrl = url + parse.urlencode(query, encoding='UTF-8', doseq=True, safe="%")
 # response = requests.get(xmlUrl)
 # soup = BeautifulSoup(response.text, 'lxml')
