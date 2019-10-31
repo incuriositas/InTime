@@ -68,6 +68,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'web.wsgi.application'
+DATE_INPUT_FORMATS = ['%d/%m/%Y %H:%M']
 
 
 # Database
