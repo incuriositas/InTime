@@ -2,13 +2,13 @@ import pandas as pd
 import pickle
 from sklearn.externals import joblib
 
-from_pk = joblib.load('intime.pkl')
 
 import urllib
 import json
 from datetime import datetime
 
 now = datetime.now()
+from_pk = joblib.load('intime.pkl')
 
 
 def getWeather(origin, day, time):
@@ -102,4 +102,4 @@ def predict_delay(departure_date_time, weekend, airport, origin, destination, we
             }]
     return from_pk.predict(pd.DataFrame(input))[0]
 
-predict_delay('31/10/2019 19:00:00','목', '제주','제주', '김포', weather)
+print()

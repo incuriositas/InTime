@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Flight
 from django.shortcuts import render, redirect, HttpResponse
 from .form import SearchForm
+from predict import predict_delay, getWeather, get_day
 
 
 def index(request):
@@ -16,7 +17,14 @@ def search(request, pk):
 
 def form_func(request):
     flight = Flight.objects.last()
-    
+    weather = getWeather(flight.airport, int(str(flight.date)[8:10]), int(str(flight.date)[11:13]))
+    flight.delayRate = predict_delay(int(str(flight.date)[0:4]), int(str(flight.date)[5:7]),
+                                     int(str(flight.date)[8:10]), int(str(flight.date)[11:13]),
+                                     get_day(int(str(flight.date)[8:10]), int(str(flight.date)[5:7])),
+                                     flight.airport,
+                                     flight.airport,
+                                     flight.arrived,
+                                     weather)
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():

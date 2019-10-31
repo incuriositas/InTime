@@ -18,8 +18,8 @@ class Flight(models.Model):
         ('진에어', '진에어')
     )
     airport_choice = (
-        ('제주공항', '제주공항'),
-        ('김포공항', '김포공항')
+        ('제주', '제주'),
+        ('김포', '김포')
     )
 
     airline = models.CharField(max_length=20, choices=airline_choice)  # 항공사
@@ -32,4 +32,23 @@ class Flight(models.Model):
     state = models.CharField(max_length=10, null=True, blank=True)     # 상태(현황)
 
     def __str__(self):
-        return "%s에서 %s시에 출발하는 %s의 지연률은 %s입니다." %(self.airport, str(self.date)[:13], self.airline, self.delayRate)
+        string = ""
+        if self.delayRate == 0:
+            string = "지연이 없을 것으로 예상됩니다."
+        elif self.delayRate == 1:
+            string = "최대 10분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 2:
+            string = "최대 15분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 3:
+            string = "최대 20분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 4:
+            string = "최대 30분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 5:
+            string = "최대 40분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 6:
+            string = "최대 50분 지연될 것으로 예상됩니다."
+        elif self.delayRate == 7:
+            string = "최대 1시간 지연될 것으로 예상됩니다."
+        else:
+            string = "1시간 이상 지연될 것으로 예상됩니다."
+        return "%s에서 %s년 %s월 %s일 %s시에 출발하는 %s은 %s" %(self.airport, str(self.date)[0:4], str(self.date)[8:10], str(self.date)[5:7], str(self.date)[11:13], self.airline, string)
