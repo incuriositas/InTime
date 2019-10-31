@@ -9,6 +9,8 @@ import json
 
 import datetime
 now = datetime.datetime.now()
+client_id = 'id'
+client_secret = 'secret'
 
 def get_day(month, day):
     print(['MON','TUE','WED','THU','FRI','SAT','SUN'][datetime.date(2019, month, day).weekday()])
@@ -28,13 +30,13 @@ def getWeather(origin, day, time):
     wind_dir = 0
     temp = 22.5
     num = 0
-    
-    if day==now.day:    
-        num = time - (now.hour)
-    else:
-        num = time + (24-now.hour)
 
-    request = json.loads(urllib.request.urlopen('https://api.aerisapi.com/forecasts/'+originName+'?&format=json&filter=1hr&limit=120&client_id=JubiGF1T5mtONfrcjWZpr&client_secret=GQ8ApghMTIAlQaX5KwRvXY7EDhZUy8UrzvtRHi6m')
+    if day == now.day:
+        num = time - 1
+    else:
+        num = 24 - now.hour + 24 * (day - now.day - 1) + time - 1
+    request = json.loads(urllib.request.urlopen('https://api.aerisapi.com/forecasts/'+originName+'?&format=json&filter=1hr&limit=120&client_id='
+                                                + client_id + '&client_secret=' + client_secret)
     .read())
     res = request['response']
     periods = res[0]['periods']

@@ -17,9 +17,12 @@ def search(request, pk):
 
 def form_func(request):
     flight = Flight.objects.last()
-    weather = getWeather(flight.airport, int(str(flight.date)[8:10]), int(str(flight.date)[11:13]))
-    flight.delayRate = predict_delay(int(str(flight.date)[0:4]), int(str(flight.date)[5:7]),
-                                     int(str(flight.date)[8:10]), int(str(flight.date)[11:13]),
+    year = int(str(flight.date)[0:4])
+    month = int(str(flight.date)[8:10])
+    day = int(str(flight.date)[5:7])
+    hour = int(str(flight.date)[11:13]) + 9
+    weather = getWeather(flight.airport, day, hour)
+    flight.delayRate = predict_delay(year, day, month, hour,
                                      get_day(int(str(flight.date)[8:10]), int(str(flight.date)[5:7])),
                                      flight.airport,
                                      flight.airport,

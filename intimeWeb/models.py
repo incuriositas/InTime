@@ -32,6 +32,7 @@ class Flight(models.Model):
     state = models.CharField(max_length=10, null=True, blank=True)     # 상태(현황)
 
     def __str__(self):
+        hour = str(int(str(self.date)[11:13]) + 9)
         string = ""
         if self.delayRate == 0:
             string = "지연이 없을 것으로 예상됩니다."
@@ -51,4 +52,4 @@ class Flight(models.Model):
             string = "최대 1시간 지연될 것으로 예상됩니다."
         else:
             string = "1시간 이상 지연될 것으로 예상됩니다."
-        return "%s에서 %s년 %s월 %s일 %s시에 출발하는 %s은 %s" %(self.airport, str(self.date)[0:4], str(self.date)[8:10], str(self.date)[5:7], str(self.date)[11:13], self.airline, string)
+        return "%s에서 %s년 %s월 %s일 %s시에 출발하는 %s은 %s" %(self.airport, str(self.date)[0:4], str(self.date)[8:10], str(self.date)[5:7], hour, self.airline, string)
