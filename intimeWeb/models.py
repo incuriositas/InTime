@@ -37,17 +37,17 @@ class Flight(models.Model):
         if self.delayRate == 0:
             string = "지연이 없을 것으로 예상됩니다."
         elif self.delayRate == 1:
-            string = "최대 10분 지연될 것으로 예상됩니다."
+            string = "0 ~ 10분 지연될 것으로 예상됩니다."
         elif self.delayRate == 2:
-            string = "최대 15분 지연될 것으로 예상됩니다."
+            string = "10 ~ 15분 지연될 것으로 예상됩니다."
         elif self.delayRate == 3:
-            string = "최대 20분 지연될 것으로 예상됩니다."
+            string = "15 ~ 20분 지연될 것으로 예상됩니다."
         elif self.delayRate == 4:
-            string = "최대 30분 지연될 것으로 예상됩니다."
+            string = "20 ~ 30분 지연될 것으로 예상됩니다."
         elif self.delayRate == 5:
-            string = "최대 40분 지연될 것으로 예상됩니다."
+            string = "30 ~ 40분 지연될 것으로 예상됩니다."
         elif self.delayRate == 6:
-            string = "최대 50분 지연될 것으로 예상됩니다."
+            string = "40 ~ 50분 지연될 것으로 예상됩니다."
         elif self.delayRate == 7:
             string = "최대 1시간 지연될 것으로 예상됩니다."
         else:

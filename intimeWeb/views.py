@@ -22,12 +22,15 @@ def form_func(request):
     day = int(str(flight.date)[5:7])
     hour = int(str(flight.date)[11:13]) + 9
     weather = getWeather(flight.airport, day, hour)
-    flight.delayRate = predict_delay(year, day, month, hour,
-                                     get_day(int(str(flight.date)[8:10]), int(str(flight.date)[5:7])),
+    print('year : ' + str(year), 'day : ' + str(day), 'month : ' + str(month) + 'hour : ' + str(hour))
+    print(weather)
+    flight.delayRate = predict_delay(year, month, day, hour,
+                                     get_day(month, day),
                                      flight.airport,
                                      flight.airport,
                                      flight.arrived,
                                      weather)
+    print(flight.delayRate)
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
