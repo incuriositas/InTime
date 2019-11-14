@@ -33,9 +33,10 @@ def getWeather(origin, day, time):
     num = 0
 
     if day == now.day:
-        num = time-now.hour-1
+        num = time - 1
     else:
         num = 24 - now.hour + 24 * (day - now.day - 1) + time - 1
+    print(num)
     request = json.loads(urllib.request.urlopen('https://api.aerisapi.com/forecasts/'+originName+'?&format=json&filter=1hr&limit=120&client_id='
                                                 + client_id + '&client_secret=' + client_secret)
     .read())

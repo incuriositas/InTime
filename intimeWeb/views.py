@@ -7,7 +7,9 @@ from predict import predict_delay, getWeather, get_day
 
 def index(request):
     flights = Flight.objects.all()
-    return render(request, 'intimeWeb/index.html', {'flights': flights})
+    form = SearchForm()
+    return render(request, 'intimeWeb/index.html', {'flights': flights,
+                                                    'form': form})
 
 
 def search(request, pk):
@@ -18,8 +20,8 @@ def search(request, pk):
 def form_func(request):
     flight = Flight.objects.last()
     year = int(str(flight.date)[0:4])
-    month = int(str(flight.date)[8:10])
-    day = int(str(flight.date)[5:7])
+    day = int(str(flight.date)[8:10])
+    month = int(str(flight.date)[5:7])
     hour = int(str(flight.date)[11:13]) + 9
     weather = getWeather(flight.airport, day, hour)
     print('year : ' + str(year), 'day : ' + str(day), 'month : ' + str(month) + 'hour : ' + str(hour))
