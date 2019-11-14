@@ -9,8 +9,8 @@ import json
 
 import datetime
 now = datetime.datetime.now()
-client_id = 'id'
-client_secret = 'key'
+client_id = 'JubiGF1T5mtONfrcjWZpr'
+client_secret = 'GQ8ApghMTIAlQaX5KwRvXY7EDhZUy8UrzvtRHi6m'
 
 
 def get_day(month, day):

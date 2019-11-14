@@ -1,4 +1,14 @@
-footer.footer {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+footer.sticky-footer {
+  padding: 2rem 0;
+  flex-shrink: 0;
+  .copyright {
+    line-height: 1;
+    font-size: 0.8rem;
+  }
+}
+
+body.sidebar-toggled {
+  footer.sticky-footer {
+    width: 100%;
+  }
 }
