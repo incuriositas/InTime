@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'intimeWeb',
+    'bootstrap4',
+    'bootstrap_datepicker_plus'
+
 ]
 
 MIDDLEWARE = [
@@ -68,9 +71,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'web.wsgi.application'
-DATE_INPUT_FORMATS = ['%d/%m/%Y %H:%M']
 
-
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -113,7 +117,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

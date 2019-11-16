@@ -7,7 +7,9 @@ from predict import predict_delay, getWeather, get_day
 
 def index(request):
     flights = Flight.objects.all()
-    return render(request, 'intimeWeb/index.html', {'flights': flights})
+    form = SearchForm()
+    return render(request, 'intimeWeb/index.html', {'flights': flights,
+                                                    'form': form})
 
 
 def charts(request):

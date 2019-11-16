@@ -1,4 +1,8 @@
 {% load staticfiles %}
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_css %}         {# Embed Bootstrap CSS #}
+{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+{{ form.media }}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>InTime Web</title>
 
   <!-- Custom fonts for this template-->
   <link href='{% static "intimeWeb/vendor/fontawesome-free/css/all.min.css" %}' rel="stylesheet" type="text/css">
@@ -19,7 +23,12 @@
 
   <!-- Custom styles for this template-->
   <link href='{% static "intimeWeb/css/sb-admin-2.min.css" %}' rel="stylesheet">
-
+  <style>
+    .form_class {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -80,10 +89,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href='[% static "intimeWeb/utilities-color.html" %}'>Colors</a>
-            <a class="collapse-item" href='[% static "intimeWeb/utilities-border.html" %}'>Borders</a>
-            <a class="collapse-item" href='[% static "intimeWeb/utilities-animation.html" %}'>Animations</a>
-            <a class="collapse-item" href='[% static "intimeWeb/utilities-other.html" %}'>Other</a>
+            <a class="collapse-item" href='{% static "intimeWeb/utilities-color.html" %}'>Colors</a>
+            <a class="collapse-item" href='{% static "intimeWeb/utilities-border.html" %}'>Borders</a>
+            <a class="collapse-item" href='{% static "intimeWeb/utilities-animation.html" %}'>Animations</a>
+            <a class="collapse-item" href='{% static "intimeWeb/utilities-other.html" %}'>Other</a>
           </div>
         </div>
       </li>
@@ -105,13 +114,13 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href='[% static "intimeWeb/login.html" %}'>Login</a>
-            <a class="collapse-item" href='[% static "intimeWeb/register.html" %}'>Register</a>
-            <a class="collapse-item" href='[% static "intimeWeb/forgot-password.html" %}'>Forgot Password</a>
+            <a class="collapse-item" href='{% static "intimeWeb/login.html" %}'>Login</a>
+            <a class="collapse-item" href='{% static "intimeWeb/register.html" %}'>Register</a>
+            <a class="collapse-item" href='{% static "intimeWeb/forgot-password.html" %}'>Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href='[% static "intimeWeb/404.html" %}'>404 Page</a>
-            <a class="collapse-item" href='[% static "intimeWeb/blank.html" %}'>Blank Page</a>
+            <a class="collapse-item" href='{% static "intimeWeb/404.html" %}'>404 Page</a>
+            <a class="collapse-item" href='{% static "intimeWeb/blank.html" %}'>Blank Page</a>
           </div>
         </div>
       </li>
@@ -146,7 +155,6 @@
 
       <!-- Main Content -->
       <div id="content">
-
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -339,6 +347,21 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
+        <div class="form_class">
+          <form action="{% url 'form_func' %}" method="POST">
+            {% csrf_token %}
+            {% for i in form %}
+              <ul>
+                {{ i.name }} :
+                {{ i }}
+                <br>
+              </ul>
+            {% endfor %}
+            <ul>
+              <input type="submit" value="검색" name="submit">
+            </ul>
+          </form>
+        </div>
           <!-- Content Row -->
           <div class="row">
 
