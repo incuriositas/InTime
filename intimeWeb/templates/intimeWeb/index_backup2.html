@@ -29,9 +29,6 @@
       height: 300px;
       float: left;
     }
-    .invisible {
-      display: none;
-    }
   </style>
 </head>
 
@@ -381,19 +378,11 @@
                     <form action="{% url 'form_func' %}" method="POST">
                       {% csrf_token %}
                       {% for i in form %}
-                        {% if i.name != 'delayRate' %}
-                          <ul>
-                            {{ i.name }} :
-                            {{ i }}
-                            <br>
-                          </ul>
-                        {% else %}
-                          <ul class="invisible">
-                            {{ i.name }} :
-                            {{ i }}
-                            <br>
-                          </ul>
-                        {% endif %}
+                        <ul>
+                          {{ i.name }} :
+                          {{ i }}
+                          <br>
+                        </ul>
                       {% endfor %}
                         <ul>
                           <input type="submit" value="검색" name="submit">
