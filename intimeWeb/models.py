@@ -33,23 +33,6 @@ class Flight(models.Model):
 
     def __str__(self):
         hour = str(int(str(self.date)[11:13]) + 9)
-        string = ""
-        if self.delayRate == 0:
-            string = "지연이 없을 것으로 예상됩니다."
-        elif self.delayRate == 1:
-            string = "0 ~ 10분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 2:
-            string = "10 ~ 15분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 3:
-            string = "15 ~ 20분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 4:
-            string = "20 ~ 30분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 5:
-            string = "30 ~ 40분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 6:
-            string = "40 ~ 50분 지연될 것으로 예상됩니다."
-        elif self.delayRate == 7:
-            string = "최대 1시간 지연될 것으로 예상됩니다."
-        else:
-            string = "1시간 이상 지연될 것으로 예상됩니다."
-        return "%s에서 %s년 %s월 %s일 %s시에 출발하는 %s은 %s" %(self.airport, str(self.date)[0:4], str(self.date)[5:7], str(self.date)[8:10], hour, self.airline, string)
+        return "%s에서 %s년 %s월 %s일 %s시에 출발하는 %s은 %s분 지연될 것으로 예측됩니다." %(self.airport, str(self.date)[0:4],
+                                                                     str(self.date)[5:7], str(self.date)[8:10],
+                                                                     hour, self.airline, self.delayRate)

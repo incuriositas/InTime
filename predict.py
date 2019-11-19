@@ -2,15 +2,15 @@ import pandas as pd
 import pickle
 from sklearn.externals import joblib
 
-from_pk = joblib.load('intime.pkl')
+from_pk = joblib.load('delayTime.pkl')
 
 import urllib
 import json
 
 import datetime
 now = datetime.datetime.now()
-client_id = ''
-client_secret = ''
+client_id = 'id'
+client_secret = 'key'
 
 
 def get_day(month, day):
@@ -94,4 +94,4 @@ def predict_delay(year, month, day, hour, weekend, airport, origin, destination,
               'weekend_WED': 1 if weekend == '수' else 0,
               }]
 
-    return round(from_pk.predict(pd.DataFrame(input))[0])
+    return int(from_pk.predict(pd.DataFrame(input))[0])
