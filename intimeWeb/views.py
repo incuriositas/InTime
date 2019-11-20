@@ -4,13 +4,20 @@ from .models import Flight
 from django.shortcuts import render, redirect, HttpResponse
 from .form import SearchForm
 from predict import predict_delay, getWeather, get_day
+from getState import get_state
 
 
 def index(request):
     flights = Flight.objects.last()
     form = SearchForm(request.POST)
+    if flights.airport == '제주':
+        state = get_state('CJU')
+    elif flights.airport == '김포':
+        state = get_state('GMP')
+
     return render(request, 'intimeWeb/index.html', {'flights': flights,
-                                                    'form': form})
+                                                    'form': form,
+                                                    'state': state})
 
 
 def form_func(request):
@@ -27,7 +34,7 @@ def form_func(request):
             print(weather)
             data['delayRate'] = predict_delay(year, month, day, hour, get_day(month, day), data['airport'],
                                               data['airport'],  data['arrived'], weather)
-            print(data['delayRate'])
+            print('지연율: ' + str(data['delayRate']))
             new_dict = QueryDict('', mutable=True)
             new_dict.update(data)
             new_form = SearchForm(new_dict)
