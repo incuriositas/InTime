@@ -32,7 +32,7 @@ def form_func(request):
             hour = int(data['date'][11:13])
             weather = getWeather(data['airport'], day, hour)
             print(weather)
-            data['delayRate'] = predict_delay(year, month, day, hour, get_day(month, day), data['airport'],
+            data['delayRate'] = predict_delay(year, month, day, hour, get_day(month, day), data['airline'],
                                               data['airport'],  data['arrived'], weather)
             print('지연율: ' + str(data['delayRate']))
             new_dict = QueryDict('', mutable=True)

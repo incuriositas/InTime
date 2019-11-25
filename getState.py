@@ -59,6 +59,8 @@ def get_state(airport):
                             temp.append(k.find('std').text[0:2] + ':' + k.find('std').text[2:4])
                             if k.find('etd') is not None:
                                 temp.append(k.find('etd').text[0:2] + ':' + k.find('etd').text[2:4])
+                            else:
+                                temp.append(" ")
                         else:
                             pass
                         state_list.append(temp)
@@ -89,6 +91,8 @@ def get_state(airport):
                             temp.append(k.find('std').text[0:2] + ':' + k.find('std').text[2:4])
                             if k.find('etd') is not None:
                                 temp.append(k.find('etd').text[0:2] + ':' + k.find('etd').text[2:4])
+                            else:
+                                temp.append(" ")
                         else:
                             pass
                         state_list.append(temp)
