@@ -4,7 +4,7 @@ import xml.etree.ElementTree as elemtree
 import datetime
 
 
-key = "key"
+key = ''
 url = 'http://openapi.airport.co.kr/service/rest/FlightStatusList/getFlightStatusList?'
 
 
