@@ -5,11 +5,9 @@
 - 제주대학교 SW융합캡스톤디자인II 수업 및 SW캡스톤디자인 발표 프로젝트
 - 주제 : [제주 -> 김포] / [김포 -> 제주] 항공편 지연율 예측
 
-> 사용한 예측 모델 : 랜덤포레스트 (Random Forest)
->
-> 실시간 공항 날씨 : [AerisWeather](https://www.aerisweather.com/support/docs/api/)
->
-> 실시간 항공편 현황 API : [공공데이터포털 - 항공기 운항정보](https://www.data.go.kr/subMain.jsp#/L3B1YnIvcG90L215cC9Jcm9zTXlQYWdlL29wZW5EZXZEZXRhaWxQYWdlJEBeMDgyTTAwMDAxMzBeTTAwMDAxMzUkQF5wdWJsaWNEYXRhRGV0YWlsUGs9dWRkaToxODVmMzBhYi0yZmZkLTQ5YTYtYmQ3Mi04ZWU4MzgzYzI5NTAkQF5wcmN1c2VSZXFzdFNlcU5vPTg4OTIxMjckQF5yZXFzdFN0ZXBDb2RlPVNUQ0QwMQ==)
+- 사용한 예측 모델 : 랜덤포레스트 (Random Forest)
+- 실시간 공항 날씨 : [AerisWeather](https://www.aerisweather.com/support/docs/api/)
+- 실시간 항공편 현황 API : [공공데이터포털 - 항공기 운항정보](https://www.data.go.kr/subMain.jsp#/L3B1YnIvcG90L215cC9Jcm9zTXlQYWdlL29wZW5EZXZEZXRhaWxQYWdlJEBeMDgyTTAwMDAxMzBeTTAwMDAxMzUkQF5wdWJsaWNEYXRhRGV0YWlsUGs9dWRkaToxODVmMzBhYi0yZmZkLTQ5YTYtYmQ3Mi04ZWU4MzgzYzI5NTAkQF5wcmN1c2VSZXFzdFNlcU5vPTg4OTIxMjckQF5yZXFzdFN0ZXBDb2RlPVNUQ0QwMQ==)
 
 ------
 
@@ -34,12 +32,12 @@
 
 - 웹에서 항공편 지연율 예측하기
 
-[githubImage](github.com/)
+![githubImage](github.com/)
 
-  > 1. airline : 항공사 선택
-  > 2. airport : 출발 공항 선택
-  > 3. arrived : 도착 공항 선택
-  > 4. date : 항공편의 출발 시간 선택 (날짜와 시간대만 반영됨, 분 반영 X)
+    > 1. airline : 항공사 선택
+    > 2. airport : 출발 공항 선택
+    > 3. arrived : 도착 공항 선택
+    > 4. date : 항공편의 출발 시간 선택 (날짜와 시간대만 반영됨, 분 반영 X)
 
 > Today's Real-Time Flight는 사용자가 최종적으로 선택한 시간대의 정각부터 10개 항공편의 실시간 현황을 보여줍니다.
 
