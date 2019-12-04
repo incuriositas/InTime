@@ -32,7 +32,7 @@
 
 - 웹에서 항공편 지연율 예측하기
 
-![githubImage](github.com/)
+![githubImage](https://github.com/incuriositas/InTime/blob/master/intimeScreenShot.png){: width="400" height="400"}
 
     > 1. airline : 항공사 선택
     > 2. airport : 출발 공항 선택
