@@ -34,10 +34,10 @@
 
 ![githubImage](https://github.com/incuriositas/InTime/blob/master/intimeScreenShot.png)
 
-    > 1. airline : 항공사 선택
-    > 2. airport : 출발 공항 선택
-    > 3. arrived : 도착 공항 선택
-    > 4. date : 항공편의 출발 시간 선택 (날짜와 시간대만 반영됨, 분 반영 X)
+     1. airline : 항공사 선택
+     2. airport : 출발 공항 선택
+     3. arrived : 도착 공항 선택
+     4. date : 항공편의 출발 시간 선택 (날짜와 시간대만 반영됨, 분 반영 X)
 
 > Today's Real-Time Flight는 사용자가 최종적으로 선택한 시간대의 정각부터 10개 항공편의 실시간 현황을 보여줍니다.
 
